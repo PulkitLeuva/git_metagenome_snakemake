@@ -25,9 +25,6 @@ def parse_mpa4(input_file, output_file, output_file_df1, output_file_df2):
     # Concatenate the original dataframe with the new clade levels
     df = pd.concat([clade_split, df[['NCBI_tax_id', 'relative_abundance', 'additional_species']]], axis=1)
     
-    # Remove rows with None or NaN values from the entire DataFrame
-    df.dropna(inplace=True)
-    
     # Check if 'level_2' exists in df and create df1
     if 'level_2' in df.columns:
         df1 = df[['level_2', 'relative_abundance']]
